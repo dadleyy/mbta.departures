@@ -14,5 +14,6 @@ const util    = require("gulp-util");
 require("./auto/gulp/sass")(gulp);
 require("./auto/gulp/js")(gulp);
 require("./auto/gulp/html")(gulp);
+require("./auto/gulp/watch")(gulp);
 
 gulp.task("default", ["sass", "js", "html"]);

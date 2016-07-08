@@ -16,10 +16,10 @@
     "tests"
   ],
   "dependencies": {
-    "requirejs": "^2.2.0",
-    "bases.scss": "^2.4.0",
-    "react": "^15.2.0",
-    "page": "^1.7.1",
-    "q": "^2.0.2"
+    "requirejs": "2.2.0",
+    "bases.scss": "2.4.0",
+    "react": "15.2.0",
+    "page": "1.7.1",
+    "q": "1.0.1"
   }
 }

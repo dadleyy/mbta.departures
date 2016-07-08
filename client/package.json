@@ -4,7 +4,9 @@
   "description": "demo application to display mbta departures",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/karma start --single-run"
+    "test": "./node_modules/.bin/karma start --single-run",
+    "build:debug": "./node_modules/.bin/gulp",
+    "server": "./node_modules/.bin/http-server ./dist"
   },
   "repository": {
     "type": "git",
