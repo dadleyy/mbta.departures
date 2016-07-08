@@ -1,0 +1,22 @@
+{
+  "name": "departures",
+  "description": "demo application to display mbta departures",
+  "main": "index.js",
+  "authors": [
+    "Danny Hadley <dadleyy@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/dadleyy/mbta.departures",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "requirejs": "^2.2.0",
+    "bases.scss": "^2.4.0"
+  }
+}
