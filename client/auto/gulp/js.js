@@ -1,8 +1,11 @@
 "use strict";
 
-const path   = require("path");
-const del    = require("del");
-const concat = require("gulp-concat");
+const path    = require("path");
+const del     = require("del");
+const concat  = require("gulp-concat");
+const babel   = require("gulp-babel");
+const helpers = require("gulp-babel-external-helpers");
+const rjs     = require("gulp-requirejs-optimize");
 
 module.exports = function(gulp) {
 
@@ -16,6 +19,9 @@ module.exports = function(gulp) {
     path.join(base, "bower_components/requirejs/require.js")
   ];
 
+  let presets = ["es2015", "react"];
+  let plugins = ["external-helpers"];
+
   gulp.task("clean:js", function() {
     return del([bundle]);
   });
@@ -26,7 +32,25 @@ module.exports = function(gulp) {
       .pipe(gulp.dest(path.dirname(bundle)));
   });
 
-  gulp.task("js", ["js:vendors", "clean:js"], function() {
+  gulp.task("js:babel", ["clean:js"], function() {
+    return gulp.src(["**/*.js", "**/*.jsx"], {cwd: path.join(base, "src/js")})
+      .pipe(babel({presets, plugins}))
+      .pipe(helpers("helpers.js"))
+      .pipe(gulp.dest(path.join(base, "tmp/js")));
+  });
+
+  gulp.task("js:copy", ["js:babel", "js:vendors"], function() {
+    return gulp.src("**/*.js", {cwd: path.join(base, "tmp/js")})
+      .pipe(gulp.dest(path.join(base, "dist/assets/js")));
+  });
+
+  gulp.task("js:rjs", ["js:copy"], function() {
+    return gulp.src(["**/*.js", "!helpers.js"], {cwd: path.join(base, "tmp/js")})
+      .pipe(rjs({optimize: "none"}))
+      .pipe(gulp.dest(path.join(base, "dist/assets/js")));
+  });
+
+  gulp.task("js", ["js:vendors", "js:rjs", "clean:js"], function() {
   });
 
 };
