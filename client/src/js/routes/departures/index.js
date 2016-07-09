@@ -2,7 +2,7 @@ define([
 ], function() {
 
   function resolve() {
-    console.log(q);
+    
   }
 
   let view = "views/departures/index";
