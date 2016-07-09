@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+
+"use strict";
+
+const program = require("commander");
+const server  = require("../lib");
+
+program
+  .option("-p, --port <port>", "the port to listen on")
+  .parse(process.argv);
+
+server.start(program);

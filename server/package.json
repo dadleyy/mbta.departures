@@ -1,0 +1,27 @@
+{
+  "name": "departures",
+  "version": "1.0.0",
+  "description": "demo application to display mbta departures",
+  "scripts": {
+    "run": "node ./server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dadleyy/mbta.departures.git"
+  },
+  "author": "Danny Hadley <dadleyy@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dadleyy/mbta.departures/issues"
+  },
+  "homepage": "https://github.com/dadleyy/mbta.departures#readme",
+  "dependencies": {
+    "bluebird": "^3.4.1",
+    "csv-parse": "^1.1.2",
+    "commander": "^2.9.0",
+    "express": "^4.14.0"
+  },
+  "devDependencies": {
+    "pm2": "^1.1.3"
+  }
+}
