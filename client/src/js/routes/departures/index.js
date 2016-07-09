@@ -15,7 +15,7 @@ define([
       return deferred.reject(500);
     }
 
-    delegate.items()
+    delegate.load()
       .then(success)
       .catch(error);
 
