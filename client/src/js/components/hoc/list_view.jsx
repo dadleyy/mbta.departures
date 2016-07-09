@@ -3,16 +3,20 @@ define([
 
 
   function Factory(Transclusion) {
-    return React.createClass({
-      displayName: "ListView",
+    let displayName = "list-view";
 
-      render() {
-        return (
-          <div className="clearfix">
-          </div>
-        )
-      }
-    });
+    function render() {
+      let {delegate} = this.props;
+
+      console.log(delegate);
+
+      return (
+        <div className="clearfix">
+        </div>
+      )
+    }
+
+    return React.createClass({render, displayName});
   }
 
   return Factory;

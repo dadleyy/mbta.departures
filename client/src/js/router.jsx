@@ -20,7 +20,7 @@ define([
     function render(ViewModule) {
       let container = document.getElementById("main");
       Notification.remove(note_id);
-      ReactDOM.render(<ViewModule />, container);
+      ReactDOM.render(<ViewModule resolved={resolution} />, container);
     }
 
     // simple fail here. if any route rejects, or is unable to load the view 

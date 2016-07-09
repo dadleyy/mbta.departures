@@ -1,12 +1,23 @@
 define([
-], function() {
+  "services/delegates/departures"
+], function(Departures) {
 
   function resolve() {
     let deferred = Q.defer();
+    let delegate = new Departures();
 
-    setTimeout(function() {
-      deferred.resolve({});
-    }, 1500);
+    function success() {
+      deferred.resolve({delegate});
+    }
+
+    function error(e) {
+      console.error(e);
+      return deferred.reject(500);
+    }
+
+    delegate.items()
+      .then(success)
+      .catch(error);
 
     return deferred.promise;
   }
