@@ -46,7 +46,7 @@ module.exports = function(gulp) {
   });
 
   gulp.task("js:rjs", ["js:copy"], function() {
-    return gulp.src(["**/*.js", "!helpers.js"], {cwd: path.join(base, "tmp/js")})
+    return gulp.src(["main.js"], {cwd: path.join(base, "tmp/js")})
       .pipe(rjs({optimize: "none"}))
       .pipe(gulp.dest(path.join(base, "dist/assets/js")));
   });

@@ -1,5 +1,9 @@
 define([
-], function() {
+  "services/notes"
+], function(Notification) {
+
+  // scope a variable that will hold our loading notification id
+  let note_id = null;
 
   // route
   //
@@ -15,6 +19,7 @@ define([
     // the route's resolve function
     function render(ViewModule) {
       let container = document.getElementById("main");
+      Notification.remove(note_id);
       ReactDOM.render(<ViewModule />, container);
     }
 
@@ -36,6 +41,7 @@ define([
     }
 
     function handler(page_route_context) {
+      note_id = Notification.add("Loading");
       resolve(page_route_context)
         .then(success)
         .catch(failed);

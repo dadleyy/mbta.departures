@@ -15,4 +15,7 @@ do ->
   start = ->
     __karma__.start()
 
+  requirejs.config
+    baseUrl: "/base/tmp/js"
+
   require tests, start
