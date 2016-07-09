@@ -10,7 +10,8 @@ module.exports = function(gulp) {
   let destination  = path.join(base, "dist/assets/css");
   let source       = [path.join(base, "src/sass/app.sass")];
   let includePaths = [
-    path.join(base, "bower_components/bases.scss/src")
+    path.join(base, "bower_components/bases.scss/src"),
+    path.join(base, "bower_components/foundation-sites/scss")
   ];
 
   gulp.task("clean:sass", function() {
