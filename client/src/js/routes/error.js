@@ -2,11 +2,11 @@ define([
 ], function() {
 
   function resolve() {
-    return Q.reject(true);
+    return Q.resolve(true);
   }
 
-  view = "views/missing";
-  path = "*"
+  view = "views/error";
+  path = "/error"
 
   return {resolve, view, path};
 
