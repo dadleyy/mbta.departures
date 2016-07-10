@@ -66,11 +66,6 @@ define([
         <div className="columns large-12">
           <h4 className="fg-white-darken-10">Departures</h4>
           <div className="margin-top-10">
-            <div className="margin-bottom-10 row">
-              <div className="columns large-4">
-                <input type="text" placeholder="Search" className="bordered-input" onInput={this.search} />
-              </div>
-            </div>
             <div className="clearfix">
               <div className="padding-tb-10 padding-lr-15">
                 <div className="row">
