@@ -11,3 +11,4 @@ require("./auto/gulp/html")(gulp);
 require("./auto/gulp/watch")(gulp);
 
 gulp.task("default", ["sass", "js", "html"]);
+gulp.task("release", ["sass:release", "js:release", "html:release"]);

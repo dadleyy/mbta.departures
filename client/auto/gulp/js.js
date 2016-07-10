@@ -5,6 +5,7 @@ const del     = require("del");
 const concat  = require("gulp-concat");
 const babel   = require("gulp-babel");
 const helpers = require("gulp-babel-external-helpers");
+const uglify  = require("gulp-uglify");
 const rjs     = require("gulp-requirejs-optimize");
 
 module.exports = function(gulp) {
@@ -29,6 +30,14 @@ module.exports = function(gulp) {
     return del([bundle]);
   });
 
+  gulp.task("js:vendors:release", function() {
+    return gulp.src(vendors)
+      .pipe(concat("bundle.js"))
+      .pipe(gulp.dest(path.dirname(bundle)))
+      .pipe(uglify())
+      .pipe(gulp.dest(path.dirname(bundle)));
+  });
+
   gulp.task("js:vendors", function() {
     return gulp.src(vendors)
       .pipe(concat("bundle.js"))
@@ -47,13 +56,27 @@ module.exports = function(gulp) {
       .pipe(gulp.dest(path.join(base, "dist/assets/js")));
   });
 
+  gulp.task("js:copy:release", ["js:babel", "js:vendors"], function() {
+    return gulp.src("**/*.js", {cwd: path.join(base, "tmp/js")})
+      .pipe(gulp.dest(path.join(base, "dist/assets/js")))
+      .pipe(uglify())
+      .pipe(gulp.dest(path.join(base, "dist/assets/js")));
+  });
+
   gulp.task("js:rjs", ["js:copy"], function() {
     return gulp.src(["main.js"], {cwd: path.join(base, "tmp/js")})
       .pipe(rjs({optimize: "none"}))
       .pipe(gulp.dest(path.join(base, "dist/assets/js")));
   });
 
-  gulp.task("js", ["js:vendors", "js:rjs", "clean:js"], function() {
+  gulp.task("js:rjs:release", ["js:copy:release"], function() {
+    return gulp.src(["main.js"], {cwd: path.join(base, "tmp/js")})
+      .pipe(rjs({optimize: "uglify"}))
+      .pipe(gulp.dest(path.join(base, "dist/assets/js")));
   });
+
+  gulp.task("js", ["js:vendors", "js:rjs"]);
+
+  gulp.task("js:release", ["js:vendors:release", "js:rjs:release"]);
 
 };

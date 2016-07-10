@@ -18,6 +18,13 @@ module.exports = function(gulp) {
     return del([destination]);
   });
 
+  gulp.task("sass:release", ["clean:sass"], function() {
+    let outputStyle = "condensed";
+    return gulp.src(source)
+      .pipe(sass({outputStyle, includePaths}).on("error", sass.logError))
+      .pipe(gulp.dest(destination));
+  });
+
   gulp.task("sass", ["clean:sass"], function() {
     let outputStyle = "expanded";
     return gulp.src(source)
