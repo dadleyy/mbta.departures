@@ -71,7 +71,31 @@ define([
                 <input type="text" placeholder="Search" className="bordered-input" onInput={this.search} />
               </div>
             </div>
-            <div className="clearfix">{child}</div>
+            <div className="clearfix">
+              <div className="padding-tb-10 padding-lr-15">
+                <div className="row">
+                  <div className="columns large-3">
+                    <p className="fg-white-darken-6">Origin</p>
+                  </div>
+                  <div className="columns large-3">
+                    <p className="fg-white-darken-6">Destination</p>
+                  </div>
+                  <div className="columns large-1">
+                    <p className="fg-white-darken-10">Trip</p>
+                  </div>
+                  <div className="columns large-2">
+                    <p className="fg-white-darken-10">Status</p>
+                  </div>
+                  <div className="columns large-2">
+                    <p className="fg-white-darken-10">Scheduled Time</p>
+                  </div>
+                  <div className="columns large-1">
+                    <p className="fg-white-darken-10">Track</p>
+                  </div>
+                </div>
+              </div>
+              <div className="clearfix">{child}</div>
+            </div>
           </div>
         </div>
       </div>

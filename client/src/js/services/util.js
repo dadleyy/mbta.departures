@@ -8,6 +8,12 @@ define([
     return str;
   }
 
-  return {pad};
+  function replace(a1, a2) {
+    let count = a1.length;
+    a1.splice.apply(a1, [0, count].concat(a2));
+    return a1;
+  }
+
+  return {replace, pad};
 
 });

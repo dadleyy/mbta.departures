@@ -6,7 +6,10 @@ const pug  = require("gulp-pug");
 
 module.exports = function(gulp) {
 
-  let base = path.join(__dirname, "../../");
+  let base   = path.join(__dirname, "../../");
+  let locals = {
+    API_HOME: process.env["API_HOME"]
+  };
 
   gulp.task("clean:html", function() {
     return del([
@@ -16,7 +19,7 @@ module.exports = function(gulp) {
 
   gulp.task("html", ["clean:html"], function() {
     return gulp.src(path.join(base, "src/html/index.jade"))
-      .pipe(pug({pretty: true}))
+      .pipe(pug({locals, pretty: true}))
       .pipe(gulp.dest(path.join(base, "dist")));
   });
 

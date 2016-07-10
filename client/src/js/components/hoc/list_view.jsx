@@ -17,7 +17,7 @@ define([
       }
 
       return (
-        <div className="list-view clearfix border-top-1 border-bottom-1 border-color-white-darken-25">{nodes}</div>
+        <div className="list-view clearfix">{nodes}</div>
       );
     }
 

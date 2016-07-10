@@ -1,5 +1,10 @@
 define([
-], function() {
+  "services/util",
+  "resources/departure"
+], function(util, Departure) {
+
+  function replace(a1, a2) {
+  }
 
   class Departures {
 
@@ -11,10 +16,10 @@ define([
       let {departures} = this;
       let deferred = Q.defer();
 
-      setTimeout(function() {
-        departures.push({name: "danny"});
-        deferred.resolve(departures);
-      }, 1000);
+      Departure.get(null, function(err, results) {
+        util.replace(departures, results);
+        deferred.resolve(results);
+      });
 
       return deferred.promise;
     }

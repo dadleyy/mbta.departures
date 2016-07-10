@@ -17,5 +17,9 @@ html
           baseUrl: "/assets/js"
         });
 
+        window.ENV = {
+          API_HOME: "#{API_HOME}"
+        };
+
         require(["main"]);
       })();

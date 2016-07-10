@@ -5,6 +5,7 @@
 const path    = require("path");
 const express = require("express");
 const program = require("commander");
+const proxy   = require('express-http-proxy');
 
 (function() {
 
@@ -19,6 +20,12 @@ const program = require("commander");
 
   // serve the js, css from the assets dir
   app.use(express.static(assets));
+
+  app.get("/api/*", proxy("http://0.0.0.0:8888", {
+    forwardPath: function(req, res) {
+      return req.path.substr(4);
+    }
+  }));
 
   // send the same index html for every request - this is a single
   // page application
