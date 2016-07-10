@@ -19,9 +19,10 @@
   },
   "homepage": "https://github.com/dadleyy/mbta.departures#readme",
   "dependencies": {
-    "dotenv": "^2.0.0"
   },
   "devDependencies": {
+    "bower": "^1.7.9",
+    "dotenv": "^2.0.0",
     "babel-core": "^6.10.4",
     "babel-plugin-external-helpers": "^6.8.0",
     "babel-preset-es2015": "^6.9.0",
