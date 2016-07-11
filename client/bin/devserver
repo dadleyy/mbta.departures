@@ -11,9 +11,11 @@ const proxy   = require('express-http-proxy');
 
   program
     .option("-p, --port <port>", "the port for express to listen on, defaults to 8080")
+    .option("-a, --api <url>", "the url to proxy through to the api - defailts to http://0.0.0.0:8888")
     .parse(process.argv);
 
   let port   = program.port || 8080;
+  let api    = program.api  || "http://0.0.0.0:8888";
   let app    = express();
   let assets = path.join(__dirname, "../dist");
   let index  = path.join(__dirname, "../dist/index.html");
@@ -21,7 +23,7 @@ const proxy   = require('express-http-proxy');
   // serve the js, css from the assets dir
   app.use(express.static(assets));
 
-  app.get("/api/*", proxy("http://0.0.0.0:8888", {
+  app.get("/api/*", proxy(api, {
     forwardPath: function(req, res) {
       return req.path.substr(4);
     }
